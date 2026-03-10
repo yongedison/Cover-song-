@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yong's Songlist 🎸</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #1a1a2e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 { color: #f1c40f; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+
+        .song-container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        /* Tombol Judul Lagu */
+        .song-title {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            border-left: 5px solid #f1c40f;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            transition: 0.3s;
+        }
+
+        .song-title:hover { background: rgba(255, 255, 255, 0.2); }
+
+        /* Isi Lirik (Awalnya Sembunyi) */
+        .lyrics {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 0 0 10px 10px;
+        }
+
+        .lyrics p { padding: 15px; margin: 0; line-height: 1.6; color: #bdc3c7; }
+
+        .chord { color: #f1c40f; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>🎸 My Songlist</h1>
+    <p>Klik judul lagu buat lihat lirik & chord</p>
+
+    <div class="song-container">
+        
+        <div class="song-item">
+            <div class="song-title" onclick="toggleLyrics(this)">
+                <span>1. Peterpan - Mungkin Nanti</span>
+                <span>▼</span>
+            </div>
+            <div class="lyrics">
+                <p>
+                    <span class="chord">C Em</span><br>
+                    Saatnya ku berkata...<br>
+                    <span class="chord">F C</span><br>
+                    Mungkin yang terakhir kalinya...<br>
+                    <span class="chord">G Am</span><br>
+                    Sudahlah lepaskan semua...
+                </p>
+            </div>
+        </div>
+
+        <div class="song-item">
+            <div class="song-title" onclick="toggleLyrics(this)">
+                <span>2. Dewa 19 - Pupus</span>
+                <span>▼</span>
+            </div>
+            <div class="lyrics">
+                <p>
+                    <span class="chord">C G Am</span><br>
+                    Aku tak mengerti... apa yang kurasa...<br>
+                    <span class="chord">F C G</span><br>
+                    Melihat dirimu... dengan dirinya...
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleLyrics(element) {
+            const lyrics = element.nextElementSibling;
+            if (lyrics.style.maxHeight) {
+                lyrics.style.maxHeight = null;
+                element.querySelector('span:last-child').innerText = "▼";
+            } else {
+                lyrics.style.maxHeight = lyrics.scrollHeight + "px";
+                element.querySelector('span:last-child').innerText = "▲";
+            }
+        }
+    </script>
+
+</body>
+</html>
